@@ -13,7 +13,7 @@ class CharUtil {
 	// 306 だ ち ぢ っ つ づ て で と ど な に ぬ ね の は
 	// 307 ば ぱ ひ び ぴ ふ ぶ ぷ へ べ ぺ ほ ぼ ぽ ま み
 	// 308 む め も ゃ や ゅ ゆ ょ よ ら り る れ ろ ゎ わ
-	// 309 ゐ ゑ を ん ヴ ヵ ヶ
+	// 309 ゐ ゑ を ん ゔ ヵ ヶ
 	static final char clToHWKana1[] = {
 		'\uFF67','\uFF71','\uFF68','\uFF72','\uFF69','\uFF73','\uFF6A',
 		'\uFF74','\uFF6B','\uFF75','\uFF76','\uFF76','\uFF77','\uFF77','\uFF78',
@@ -41,14 +41,14 @@ class CharUtil {
 		'あ',0,0,0,'え',0,0,0,'い',0,0,0,0,0,'お',0,0,0,0,0,'う'
 	};
 	static final String[] slContracted = {
-		"ぁ","ぃ","ぅ","ぇ","ぉ","ヵ","ヶ","っ","ゃ","ゅ","ょ"
+		"ぁ","ぃ","ぅ","ぇ","ぉ","ヵ","ヶ","っ","ゃ","ゅ","ょ","ゎ"
 	};
 	static final char[] clToContracted = {
 		'ヵ',0,0,0,0,
 		0,'ヶ',0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 		0,0,0,0,'っ',0,0,0,0,0,0,0,0,0,0,0,
 		0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-		0,0,0,0,'ゃ',0,'ゅ',0,'ょ'
+		0,0,0,0,'ゃ',0,'ゅ',0,'ょ',0,0,0,0,0,0,'ゎ'
 	};
 	static final boolean[] blEscapeChar = {
 		false,true,false,false,true,false,true,false, // !"#$%&'
@@ -101,7 +101,7 @@ class CharUtil {
 	}
 
 	static char toContracted(char c) {
-		return ((c>='か')&&(c<='よ'))?clToContracted[c-'か']:0;
+		return ((c>='か')&&(c<='わ'))?clToContracted[c-'か']:0;
 	}
 
 	static String[] toHiragana(String si, boolean be) {
@@ -115,7 +115,7 @@ class CharUtil {
 			char ci = sb.charAt(i);
 			if (ci=='ー') {
 				sb.setCharAt(i,'\uFF70');
-			} else if (ci=='ヴ') {
+			} else if (ci=='ゔ') {
 				sb.setCharAt(i,'\uFF73');
 				sb.insert(++i,DT);
 				ns++;
@@ -204,7 +204,14 @@ class CharUtil {
 				int i0=i;
 				String sh=null;
 				boolean bh=false;
-				if (iv<=i-2) {
+				if (iv<=i-3) {
+					sh = (String)mh.get(si.substring(i-3,i+1));
+					if (sh!=null) {
+						bh = (iv<=i-4)&&(si.charAt(i-4)==si.charAt(i-3));
+						i0 = i-3;
+					}
+				}
+				if ((sh==null)&&(iv<=i-2)) {
 					sh = (String)mh.get(si.substring(i-2,i+1));
 					if (sh!=null) {
 						bh = (iv<=i-3)&&(si.charAt(i-3)==si.charAt(i-2));
@@ -287,11 +294,18 @@ class CharUtil {
 		ArrayList al = new ArrayList();
 		boolean b2 = (iv<=ns-2);
 		char c2 = (b2?si.charAt(ns-2):0);
+		boolean b3 = (iv<=ns-3);
+		char c3 = (b3?si.charAt(ns-3):0);
 		int nsm = ns - iv;
 		for (int i=0; i<nl; i++) {
 			String sk = slr[i];
 			int ncm = 0;
-			if (b2&&(sk.length()>2)) {
+			if (b3&&(sk.length()>3)) {
+				if ((sk.charAt(0)==c3)&&(sk.charAt(1)==c2)&&(sk.charAt(2)==c1)) {
+					ncm = 3;
+				}
+			}
+			if (ncm==0&&b2&&(sk.length()>2)) {
 				if ((sk.charAt(0)==c2)&&(sk.charAt(1)==c1)) {
 					ncm = 2;
 				}
@@ -306,7 +320,9 @@ class CharUtil {
 			}
 			String sh = (String)mh.get(sk);
 			boolean bh;
-			if (ncm==2) {
+			if (ncm==3) {
+				bh = (iv<=ns-4)&&(si.charAt(ns-4)==c3);
+			} else if (ncm==2) {
 				bh = (iv<=ns-3)&&(si.charAt(ns-3)==c2);
 			} else {
 				bh = b2&&(c2==c1);

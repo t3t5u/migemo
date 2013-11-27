@@ -37,8 +37,8 @@
 れ	re	le
 ろ	ro	lo
 わ	wa
-ゐ	wi
-ゑ	we
+ゐ	wi	wyi
+ゑ	we	wye
 を	wo
 が	ga
 ぎ	gi
@@ -65,45 +65,73 @@
 ぷ	pu
 ぺ	pe
 ぽ	po
-ヴ	vu
+ゔ	vu
+いぇ	ye
+うぃ	whi
+うぇ	whe
+うぉ	who
 きゃ	kya
 きゅ	kyu
 きょ	kyo
-しゃ	sha	sya
-しゅ	shu	syu
-しょ	sho	syo
-ちゃ	cha
-ちゅ	chu
-ちょ	cho
+ぎゃ	gya
+ぎゅ	gyu
+ぎょ	gyo
+くぁ	kwa	qa
+くぃ	kwi	qi
+くぇ	kwe	qe
+くぉ	kwo	qo
+ぐぁ	gwa
+しぇ	sye	she
+しゃ	sya	sha
+しゅ	syu	shu
+しょ	syo	sho
+じぇ	zye	je
+じゃ	zya	ja	jya
+じゅ	zyu	ju	jyu
+じょ	zyo	jo	jyo
+ちぇ	tye	che
+ちゃ	tya	cha	cya
+ちゅ	tyu	chu	cyu
+ちょ	tyo	cho	cyo
+ぢぇ	dye
+ぢゃ	dya
+ぢゅ	dyu
+ぢょ	dyo
+つぁ	tsa
+つぃ	tsi
+つぇ	tse
+つぉ	tso
+てぃ	thi
+てゅ	thu
+でぃ	dhi
+でゅ	dhu
+とぅ	twu
+どぅ	dwu
 にゃ	nya
 にゅ	nyu
 にょ	nyo
 ひゃ	hya
 ひゅ	hyu
 ひょ	hyo
-みゃ	mya
-みゅ	myu
-みょ	myo
-りゃ	rya
-りゅ	ryu
-りょ	ryo
-ぎゃ	gya
-ぎゅ	gyu
-ぎょ	gyo
-じゃ	zya	ja
-じゅ	zyu	ju
-じょ	zyo	jo
 びゃ	bya
 びゅ	byu
 びょ	byo
 ぴゃ	pya
 ぴゅ	pyu
 ぴょ	pyo
-ふぁ	fa
-ふぃ	fi
-ふぇ	fe
-ふぉ	fo
-ヴぁ	va
-ヴぃ	vi
-ヴぇ	ve
-ヴぉ	vo
+ふぁ	fa	hwa
+ふぃ	fi	hwi
+ふぇ	fe	hwe
+ふぉ	fo	hwo
+ふゅ	fyu	hwyu
+みゃ	mya
+みゅ	myu
+みょ	myo
+りゃ	rya
+りゅ	ryu
+りょ	ryo
+ゔぁ	va
+ゔぃ	vi
+ゔぇ	ve
+ゔぉ	vo
+ゔゅ	vyu
